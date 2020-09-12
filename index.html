@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Sales Tax Calculator</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <div class="card">
+        <h1>Sales Tax Calculator</h1>
+        <div id="calculatorDiv">
+            <h3>Enter sale amount</h3>
+            <input type="text" placeholder="Sale amount" id="saleAmount" />
+            <h3>Enter tax percentage</h3>
+            <input type="text" placeholder="Tax rate: 10% = 10 format" id="taxRate" />
+            <div id="buttonDiv">
+                <button onclick="calculate()" class="btn btn-dark">Calculate</button>
+                <button onclick="clearAll()" class="btn btn-dark">Clear</button>
+            </div>
+            <div>
+                <p class="total"><b>Final total: </b></p>
+                <p class="total" id="finalTotal"><b></b></p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" crossorigin="anonymous"></script>
+
+    <script type="text/javaScript">
+        $(document).ready(function(){
+            $('#finalTotal').hide();
+        });
+        let saleAmount = '';
+        let taxRate = '';
+        let finalTotal = '';
+
+        function calculate() {
+            saleAmount = $('#saleAmount').val();
+            taxRate = $('#taxRate').val();
+            finalTotal = Number(saleAmount) + (Number(saleAmount) * (Number(taxRate) / 100));
+            $('#finalTotal').text(finalTotal);
+            $('#finalTotal').fadeIn(1000);
+        }
+
+        function clearAll() {
+            $('#saleAmount').val('');
+            $('#taxRate').val('');
+            $('#finalTotal').fadeOut(1000);
+        
+        }
+
+    </script>
+
+</body>
+
+</html>
